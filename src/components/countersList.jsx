@@ -25,23 +25,18 @@ const CountersList = () => {
     }
 
     const handleIncrement = (id) =>{
-        const newCounters = [...counters]
-        newCounters.forEach((counter) =>{
-            if (counter.id === id) {
-                counter.value +=1
-                setCounters(newCounters)
-            }
-        })
+        const elementIndex = counters.findIndex((c) => c.id === id);
+        const newCounters = [...counters];
+        newCounters[elementIndex].value++;
+        setCounters(newCounters);
     }
     const handleDecrement = (id) =>{
-        console.log('clicked -', id)
-        const newCounters = [...counters]
-        newCounters.forEach((counter) =>{
-            if (counter.id === id && counter.value > 0) {
-                counter.value -=1
-                setCounters(newCounters)
-            }
-        })
+        const elementIndex = counters.findIndex((c) => c.id === id);
+        const newCounters = [...counters];
+        if (newCounters[elementIndex].value > 0){
+            newCounters[elementIndex].value--;
+            setCounters(newCounters);
+        }
     }
 
     const handleReset = () => {
